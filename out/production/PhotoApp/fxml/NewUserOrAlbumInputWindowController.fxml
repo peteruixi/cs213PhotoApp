@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity"
+            maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" styleClass="background"
+            stylesheets=""
+            xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="PhotoApp.Controller.InputWindowController" prefHeight="400" prefWidth="200">
+<center>
+    <VBox alignment="TOP_CENTER" spacing="20" >
+        <children>
+            <VBox alignment="TOP_CENTER" spacing="5" >
+                <children>
+                    <Label fx:id="windowTitle" text="Window Title" styleClass="subheader-light"/>
+                    <Label fx:id="windowMessage" text="Window Message" styleClass="body-light"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" maxWidth="200" styleClass="input-container">
+                <Label fx:id="inputLabelA" text="Input Label A" />
+                <TextField fx:id="inputA" />
+            </VBox>
+            <VBox alignment="CENTER_LEFT" maxWidth="200" styleClass="input-container">
+                <Label fx:id="inputLabelB" text="Input Label B" styleClass="input-label"/>
+                <TextField fx:id="inputB" styleClass="input" />
+            </VBox>
+            <HBox alignment="CENTER" spacing="10" maxHeight="50" minHeight="50">
+                <children>
+                    <Button fx:id="cancelButton" onAction="#closeWindow" text="Cancel" styleClass="btn-danger" />
+                    <Button fx:id="confirmButton" text="Save" styleClass="btn-neutral" />
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+</center>
+
+</BorderPane>
