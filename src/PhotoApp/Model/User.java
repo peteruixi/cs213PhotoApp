@@ -16,4 +16,26 @@ public class User implements Serializable {
         this.userName = uName;
         this.password = pWord;
     }
+
+
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

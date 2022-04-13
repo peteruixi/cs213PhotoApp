@@ -31,6 +31,7 @@ public class AdminController {
     @FXML
     private Button adminAddNewUser;
 
+
     @FXML
     public void logout(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginController.fxml"));
@@ -43,11 +44,11 @@ public class AdminController {
     }
 
     public void initialize() throws IOException {
-        showUserMap();
+        userlistContainer();
 
     }
 
-    private void showUserMap() throws IOException {
+    private void userlistContainer() throws IOException {
         UserMap userMap = new UserMap();
         HashMap<String,User> map = userMap.getUserMap();
 
@@ -58,15 +59,17 @@ public class AdminController {
             Parent root = loader.load();
             UserListViewUnitController userListViewUnitController = loader.getController();
             userListViewUnitController.setUsername(entry.getKey());
-            Scene scene = new Scene(root);
-            scene.setFill(Color.web("#ADD8E6"));
+
+            root.setStyle("-fx-background-color: #ADD8E6");
+
+            userListViewUnitController.editUser(entry.getValue(),map);
             usersContainer.getChildren().add(root);
         }
     }
 
 
     public void adminCreateUser(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NewUserOrAlbumInputWindowController.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InputWindowController.fxml"));
         Parent root = loader.load();
         Stage window = new Stage();
         window.setScene(new Scene(root, 400, 400));
@@ -87,10 +90,10 @@ public class AdminController {
 
                 User user = new User(username, password);
                 try {
-                    userMap.getUserMap().put(username, user);
-                    userMap.saveSerializedFile();
+                    userMap.addUser(user);
                     inputWindowController.closeWindow();
-                    initialize();
+                    userlistContainer();
+
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -101,4 +104,6 @@ public class AdminController {
         };
         confirmButton.setOnAction(var);
     }
+
+
 }

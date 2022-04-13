@@ -67,4 +67,14 @@ public class UserMap implements Serializable {
         }
     }
 
+    public void addUser(User user) throws IOException {
+        loadSerializedFile();
+        if(userMap.containsKey(user.getUserName())){
+            throw new IllegalArgumentException("Username already exists.");
+        }
+        userMap.put(user.getUserName(),user);
+        saveSerializedFile();
+
+    }
+
 }
